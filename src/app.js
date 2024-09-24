@@ -14,12 +14,15 @@ dotenv.config();
 
 const uriConexcion = process.env.URIMONGO;
 
+//conexcion a base de datos, se trae la uri x dotenv (variable de entorno)
 mongoose.connect(uriConexcion)
     .then(() => console.log('Conectado a base de datos MongoDb Atlas'))
     .catch((error) => console.error('Error en conexcion :', error))
 
+//llamada a las rutas
 app.use('/', routerUser);
 
+//escucha de puerto
 app.listen(PORT, () => {
     console.log(`Escuchando en puerto ${PORT}`);  
 });
